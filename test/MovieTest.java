@@ -9,19 +9,12 @@ public class MovieTest {
 
     @Before
     public void setup() {
-        m1 = new Movie("movie1", 1);
+        m1 = new NewReleaseMovie("movie1");
     }
 
     @Test
     public void testSettingTitle() throws Exception {
         assertEquals("movie1", m1.getTitle());
-    }
-
-    @Test
-    public void testSettingPrice() throws Exception {
-        assertEquals(1, m1.getPriceCode());
-        m1.setPriceCode(2);
-        assertEquals(2, m1.getPriceCode());
     }
 
 }

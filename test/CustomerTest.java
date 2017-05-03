@@ -16,8 +16,8 @@ public class CustomerTest {
     @Before
     public void setup() {
         customer = new Customer("joe");
-        m1 = new Movie("movie1", 1);
-        m2 = new Movie("movie2", 2);
+        m1 = new NewReleaseMovie("movie1");
+        m2 = new ChildrenMovie("movie2");
     }
 
     @Test
