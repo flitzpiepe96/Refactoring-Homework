@@ -1,18 +1,18 @@
 
-import java.util.Enumeration;
-import java.util.Vector;
+import java.util.ArrayList;
+import java.util.List;
 
-class Customer {
+public class Customer {
 
     private String name;
-    private Vector rentals = new Vector();
+    private List<Rental> rentals = new ArrayList<>();
 
     public Customer(String name) {
         this.name = name;
     }
 
     public void addRental(Rental rental) {
-        rentals.addElement(rental);
+        rentals.add(rental);
     }
 
     public String getName() {
@@ -20,16 +20,16 @@ class Customer {
     }
 
     public String statement() {
-        Enumeration enum_rentals = rentals.elements();
+        // add header lines
         String resultStatement = "Rental Record for " + this.getName() + "\n";
         resultStatement += "\t" + "Title" + "\t" + "\t" + "Days" + "\t" + "Amount" + "\n";
 
-        while (enum_rentals.hasMoreElements()) {
-            Rental rental = (Rental) enum_rentals.nextElement();
+        for (Rental rental : rentals) {
             // show figures for this rental
             resultStatement += "\t" + rental.getMovie().getTitle() + "\t" + "\t" + rental.getDaysRented() + "\t"
                     + String.valueOf(rental.getCost()) + "\n";
         }
+
         // add footer lines
         resultStatement += "Amount owed is " + String.valueOf(getTotalCost()) + "\n";
         resultStatement += "You earned " + String.valueOf(getTotalFrequentRenterPoints()) + " frequent renter points";
