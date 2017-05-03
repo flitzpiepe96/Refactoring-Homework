@@ -26,13 +26,13 @@ public class RentalTest {
 
     @Test
     public void testCost() throws Exception {
-        double cost = new Rental(new Movie("movie", Movie.REGULAR), 2).getCost();
+        double cost = new Rental(new Movie("movie", Movie.REGULAR), 1).getCost();
         assertEquals(2.0, cost, 0);
 
-        cost = new Rental(new Movie("movie", Movie.NEW_RELEASE), 2).getCost();
-        assertEquals(6.0, cost, 0);
+        cost = new Rental(new Movie("movie", Movie.NEW_RELEASE), 1).getCost();
+        assertEquals(3.0, cost, 0);
 
-        cost = new Rental(new Movie("movie", Movie.CHILDRENS), 2).getCost();
+        cost = new Rental(new Movie("movie", Movie.CHILDRENS), 1).getCost();
         assertEquals(1.5, cost, 0);
 
         cost = new Rental(new Movie("movie", Movie.REGULAR), 10).getCost();
@@ -43,6 +43,27 @@ public class RentalTest {
 
         cost = new Rental(new Movie("movie", Movie.CHILDRENS), 10).getCost();
         assertEquals(12.0, cost, 0);
+    }
+
+    @Test
+    public void testFrequentRenterPoints() throws Exception {
+        int points = new Rental(new Movie("movie", Movie.REGULAR), 1).getFrequentRenterPoints();
+        assertEquals(1, points);
+
+        points = new Rental(new Movie("movie", Movie.NEW_RELEASE), 1).getFrequentRenterPoints();
+        assertEquals(1, points);
+
+        points = new Rental(new Movie("movie", Movie.CHILDRENS), 1).getFrequentRenterPoints();
+        assertEquals(1, points);
+
+        points = new Rental(new Movie("movie", Movie.REGULAR), 10).getFrequentRenterPoints();
+        assertEquals(1, points);
+
+        points = new Rental(new Movie("movie", Movie.NEW_RELEASE), 10).getFrequentRenterPoints();
+        assertEquals(2, points);
+
+        points = new Rental(new Movie("movie", Movie.CHILDRENS), 10).getFrequentRenterPoints();
+        assertEquals(1, points);
     }
 
 }
