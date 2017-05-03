@@ -24,4 +24,25 @@ public class RentalTest {
         assertEquals(m1, r1.getMovie());
     }
 
+    @Test
+    public void testCost() throws Exception {
+        double cost = new Rental(new Movie("movie", Movie.REGULAR), 2).getCost();
+        assertEquals(2.0, cost, 0);
+
+        cost = new Rental(new Movie("movie", Movie.NEW_RELEASE), 2).getCost();
+        assertEquals(6.0, cost, 0);
+
+        cost = new Rental(new Movie("movie", Movie.CHILDRENS), 2).getCost();
+        assertEquals(1.5, cost, 0);
+
+        cost = new Rental(new Movie("movie", Movie.REGULAR), 10).getCost();
+        assertEquals(14.0, cost, 0);
+
+        cost = new Rental(new Movie("movie", Movie.NEW_RELEASE), 10).getCost();
+        assertEquals(30.0, cost, 0);
+
+        cost = new Rental(new Movie("movie", Movie.CHILDRENS), 10).getCost();
+        assertEquals(12.0, cost, 0);
+    }
+
 }
